@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/estudiante")
@@ -62,17 +61,14 @@ public class EstudianteController {
 
 
     // CREAR
-    @PostMapping(value = {"", "/"})
+    @PostMapping(value = { "/crear"})
     public ResponseEntity<HashMap<String, Object>> guardarEstudiante(
-            @RequestBody Estudiante estudiante,
-            @RequestParam(value = "fetchId", required = false) boolean fetchId) {
+            @RequestBody Estudiante estudiante) {
 
         HashMap<String, Object> responseJson = new HashMap<>();
 
         estudianteRepository.save(estudiante);
-        if (fetchId) {
-            responseJson.put("id", estudiante.getId());
-        }
+
         responseJson.put("estado", "creado");
         return ResponseEntity.status(HttpStatus.CREATED).body(responseJson);
     }

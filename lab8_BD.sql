@@ -1,40 +1,79 @@
-DROP DATABASE IF EXISTS lab8;
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
+--
+-- Host: localhost    Database: lab8
+-- ------------------------------------------------------
+-- Server version	8.0.39
 
-CREATE DATABASE IF NOT EXISTS lab8;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-USE lab8;
+--
+-- Table structure for table `estudiante`
+--
 
--- ---------------------------------------------------------------------- --
--- Tables                                                                 --
--- ---------------------------------------------------------------------- --
--- ---------------------------------------------------------------------- --
--- Add table "Facultad"                                                 --
--- ---------------------------------------------------------------------- --
+DROP TABLE IF EXISTS `estudiante`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `estudiante` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(40) NOT NULL,
+  `idFacultad` int DEFAULT NULL,
+  `gpa` decimal(10,4) DEFAULT '0.0000',
+  `creditosCompletados` decimal(10,4) DEFAULT '0.0000',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE `Facultad` (
-    `idFacultad` INTEGER NOT NULL AUTO_INCREMENT,
-    `nombreFacultad` VARCHAR(30) NOT NULL,
-    
-    CONSTRAINT `PK_Facultad` PRIMARY KEY (`idFacultad`)
-);
+--
+-- Dumping data for table `estudiante`
+--
 
-CREATE INDEX `nombreFacultad` ON `Facultad` (`nombreFacultad`);
+LOCK TABLES `estudiante` WRITE;
+/*!40000 ALTER TABLE `estudiante` DISABLE KEYS */;
+INSERT INTO `estudiante` VALUES (1,'Juan',2,15.0000,10.0000),(2,'Jose',4,4.5000,13.0000);
+/*!40000 ALTER TABLE `estudiante` ENABLE KEYS */;
+UNLOCK TABLES;
 
+--
+-- Table structure for table `facultad`
+--
 
+DROP TABLE IF EXISTS `facultad`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `facultad` (
+  `idFacultad` int NOT NULL AUTO_INCREMENT,
+  `nombreFacultad` varchar(30) NOT NULL,
+  PRIMARY KEY (`idFacultad`),
+  KEY `nombreFacultad` (`nombreFacultad`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ---------------------------------------------------------------------- --
--- Add table "Estudiante"                                                   --
--- ---------------------------------------------------------------------- --
+--
+-- Dumping data for table `facultad`
+--
 
-CREATE TABLE `Estudiante` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `nombre` VARCHAR(40) NOT NULL,
-    `idFacultad` INTEGER,
-    `gpa` DECIMAL(10,4) DEFAULT 0,
-    `creditosCompletados` DECIMAL(10,4) DEFAULT 0,
-    CONSTRAINT `PK_Estudiante` PRIMARY KEY (`id`)
-);
+LOCK TABLES `facultad` WRITE;
+/*!40000 ALTER TABLE `facultad` DISABLE KEYS */;
+INSERT INTO `facultad` VALUES (4,'Arte'),(3,'Ciencias sociales'),(1,'Ingenieria'),(2,'Medicina');
+/*!40000 ALTER TABLE `facultad` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-CREATE INDEX `nombre` ON `Estudiante` (`nombrefacultad`);
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-
+-- Dump completed on 2024-10-30 21:07:01

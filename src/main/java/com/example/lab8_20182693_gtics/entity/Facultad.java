@@ -15,7 +15,7 @@ public class Facultad {
     @Column(name = "idFacultad", nullable = false)
     private Integer idFacultad;
 
-    @Column(name = "nombreFacultad", nullable = false, length = 15)
+    @Column(name = "nombreFacultad", nullable = false, length = 30)
     private String nombreFacultad;
 
 
